@@ -3,9 +3,16 @@
 void load_mem(void) {
     printf("MEM_OK");
 }
+
 void load_CPU(void) {
     printf("CPU_OK");
 }
+
 int main(void) {
-    printf("BOOT:%s|%s:END",load_mem(),load_CPU());
+    printf("BOOT:");
+    load_mem();
+    printf("|");
+    load_CPU();
+    printf(":END");
+    return 0;
 }
