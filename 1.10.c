@@ -3,15 +3,17 @@
 void ping(void) {
     printf("PING");
 }
+
 void pong(void) {
     printf("PONG");
 }
+
 void handshake(void) {
     ping();
     printf("-");
     pong();
-
 }
+
 int main(void) {
     #define NODE_ID 10
     int packet_size = NODE_ID * 4;
