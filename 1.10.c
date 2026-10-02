@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define NODE_ID 10
+
 void ping(void) {
     printf("PING");
 }
@@ -15,7 +17,7 @@ void handshake(void) {
 }
 
 int main(void) {
-    #define NODE_ID 10
+
     int packet_size = NODE_ID * 4;
     int total_transfer = packet_size*3;
 
