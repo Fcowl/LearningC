@@ -10,7 +10,7 @@ int main(void) {
     long long hours = days*HOURS_IN_DAY;
     long long ticks = hours*TICKS_IN_HOUR;
 
-    printf("%lld | %lld | %lld | %d",
+    printf("%lld | %lld | %lld | %d\n",
                 ticks, hours, days, years);
     return 0;
 }

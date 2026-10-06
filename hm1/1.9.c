@@ -13,6 +13,6 @@ void phase_1(void) {
 int main(void) {
     printf("START ");
     phase_1();
-    printf("END");
+    printf("END\n");
     return 0;
 }

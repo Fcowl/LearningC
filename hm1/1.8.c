@@ -12,5 +12,6 @@ int main(void) {
     pulse();
     pulse();
     pulse();
+    printf("\n");
     return 0;
 }

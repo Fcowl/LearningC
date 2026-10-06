@@ -13,6 +13,6 @@ int main(void) {
     load_mem();
     printf("|");
     load_CPU();
-    printf(":END");
+    printf(":END\n");
     return 0;
 }

@@ -17,7 +17,6 @@ void handshake(void) {
 }
 
 int main(void) {
-
     int packet_size = NODE_ID * 4;
     int total_transfer = packet_size*3;
 
@@ -25,6 +24,6 @@ int main(void) {
     printf(":%d\n",packet_size);
     handshake();
     printf(":%d\n",total_transfer);
-    printf("SESSION:CLOSED");
+    printf("SESSION:CLOSED\n");
     return 0;
 }
