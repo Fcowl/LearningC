@@ -9,8 +9,6 @@ int main(void) {
     printf("float: size=%d digits=%d, max=%e    \n",fl_size,FLT_DIG,FLT_MAX);
     printf("double: size=%d digits=%d, max=%e   \n",db_size,DBL_DIG,DBL_MAX);
     printf("lDouble: size=%d digits=%d, max=%Le \n",ldb_size,LDBL_DIG,LDBL_MAX);
-    /* в зависимости от системы размер L_double может быть разным, от 8 байт (не может быть меньше double)
-     * до 16 байт
-     */
+    // в зависимости от системы размер L_double может быть разным, от 12 байт до 16 байт
     return 0;
 }

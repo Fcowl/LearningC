@@ -8,7 +8,7 @@ int main(void) {
     scanf("%x %o %f", &packet_id, &tmp_status_code, &voltage);
     uint8_t status_code = tmp_status_code;
 
-    uint16_t checksum = packet_id+status_code;
+    uint16_t checksum = (uint16_t)packet_id+(uint16_t)status_code;
 
     printf("packet_id: %d \n",packet_id);
     printf("status_code: %d \n",status_code);
