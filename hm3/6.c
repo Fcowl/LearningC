@@ -3,7 +3,7 @@
 int main(void) {
     char string[100];
     int width;
-    scanf("%s %d", string, &width);
+    scanf("%99s %d", string, &width);
 
     printf("%*s\n", width, string);
     printf("%-*s", width+5, string);

@@ -3,7 +3,7 @@
 
 int main(void) {
     char username[100];
-    scanf("%s",username);
+    scanf("%99s",username);
     printf("\"%s\" \n",username);
     printf("\"%20s\" \n",username);
     printf("\"%-20s\" \n",username);

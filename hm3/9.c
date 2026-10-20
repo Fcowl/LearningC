@@ -3,8 +3,9 @@
 
 int main(void) {
     setlocale(LC_ALL, "");
+
     wchar_t name[100];
-    wscanf(L"%ls", name);
+    wscanf(L"%99ls", name);
     wprintf(L"Агент %ls авторизован в системе",name);
     return 0;
 }
