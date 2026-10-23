@@ -6,6 +6,7 @@ int main(void) {
 
     uint16_t w;
     uint16_t h;
+    printf("Введите 2 значения для вычисления по формуле: ");
     scanf("%hu %hu", &w, &h);
 
     printf("%llu \n", (unsigned long long)(2 * (w + h)));
