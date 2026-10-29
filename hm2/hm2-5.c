@@ -16,7 +16,7 @@ int main(void) {
         (int)sizeof(int16_t), INT16_MIN, INT16_MAX,vl_int16);
 
     unsigned int vl_uint16 = UINT16_MAX+1;
-    printf("UINT16: size=%d, min=%d, max=%d, values=%u \n",
+    printf("UINT16: size=%d, min=%d, max=%d, values=%d \n",
         (int)sizeof(uint16_t), 0, UINT16_MAX,vl_uint16);
 
     long long vl_int32 = (long long)pow(2,sizeof(int32_t)*8);
@@ -26,6 +26,6 @@ int main(void) {
     unsigned long long vl_uint32 = (unsigned long long)UINT32_MAX+1;
     printf("UINT32: size=%d, min=%d, max=%u, values=%llu \n",
         (int)sizeof(uint32_t), 0, UINT32_MAX,vl_uint32);
+    printf("123 \a");
     return 0;
-
 }

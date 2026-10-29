@@ -13,5 +13,6 @@ int main(void) {
                 "SUM: %d \n",
                 unit_id, unit_version, unit_status,
                 unit_id + unit_version + unit_status);
+
     return 0;
 }
