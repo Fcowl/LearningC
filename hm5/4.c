@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-
+// something changed here too omg
 int main(void) {
     //вариант 21
     double arr[8];
