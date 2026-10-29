@@ -11,5 +11,7 @@ int main(void) {
 
     while (scanf("%lf %lf", &a, &b) == 2) {
         printf("%.4f \n",calc(a,b));
+
+        // something changed in 5.c
     }
 }
