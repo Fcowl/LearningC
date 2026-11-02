@@ -2,7 +2,7 @@
 
 int main(void) {
     //вариант 9
-    const int HEIGHT = 5;
+    const int HEIGHT = 35;
     for (int n_lines = 0; n_lines<=HEIGHT; n_lines++) {
 
         for (int l = 0; l<HEIGHT && (n_lines==0 || n_lines==HEIGHT-1);l++) printf("=");
