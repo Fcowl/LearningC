@@ -10,15 +10,17 @@ bool tens_l_digit(int number) {
 
 int main(void) {
     // 15 (Числа, где цифра десятков больше цифры единиц / Наоборот)
-
+    printf("Счетчик чисел где десятки больше едениц");
     int number;
     int tens_bigger = 0, digits_bigger = 0;
     while (scanf("%d", &number) == 1) {
 
         if (number == 0) break;
 
-        if (tens_l_digit(abs(number))) tens_bigger++;
-        else digits_bigger++;
+        if (tens_l_digit(abs(number)))
+            tens_bigger++;
+        else
+            digits_bigger++;
     }
     printf("Количество чисел, где цифра десятков больше цифры единиц: %d\n", tens_bigger);
     printf("Количество чисел, где цифра единиц больше цифры десятков: %d\n", digits_bigger);

@@ -13,10 +13,8 @@ long long to_binary(unsigned int n) {
     return binary;
 }
 
-
 int main(void) {
     // 25 (Конвертер систем счисления: dec→hex, dec→oct, dec→bin, hex→dec, выход)
-    int number;
     while (true) {
         printf("\nВыберите действие:\n"
                "1. dec → hex\n"
@@ -24,26 +22,39 @@ int main(void) {
                "3. dec → bin\n"
                "4. hex → dec\n"
                "5. Выход\n");
-        char ch = getchar();
+
+        char ch;
+        if (scanf(" %c", &ch) != 1) return -1;
+
+        if (ch == '5') return 0;
+        if (ch < '1' || ch > '4') {
+            printf("Неверный выбор\n");
+            continue;
+        }
+
         printf("Введите число для конвертации: ");
-        if (ch != '5' && scanf("%d", &number) != 1) return -1; // отличный пример ленивого вычесления
+        unsigned int number;
+        if (ch == '4') {
+            if (scanf("%x", &number) != 1) return -1;
+        } else {
+            if (scanf("%d", &number) != 1) return -1;
+        }
+
         switch (ch) {
             case '1':
-                printf("%d dec -> hex: %X\n",number, number);
+                printf("%d dec -> hex: %X\n", number, number);
                 break;
             case '2':
-                printf("%d dec -> oct: %o\n",number, number);
+                printf("%d dec -> oct: %o\n", number, number);
                 break;
             case '3':
-                printf("%d dec -> bin %lld\n",number, to_binary(number));
+                printf("%d dec -> bin: %lld", number,to_binary(number));
                 break;
             case '4':
-                printf("%x hex→dec: %d\n",number, number);
+                printf("%x hex -> dec: %d\n", number, number);
                 break;
-            case '5': // Выход
-                return 0;
             default:
-                printf("Неверный выбор\n");
+                return 0;
         }
     }
     return 0;
