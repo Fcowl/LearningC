@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-long long to_binary(unsigned int n) {
+long long to_binary(int n) {
     long long binary = 0;
     long long place = 1;
 
@@ -31,6 +31,7 @@ int main(void) {
             printf("Неверный выбор\n");
             continue;
         }
+        while (getchar() != '\n') continue;
 
         printf("Введите число для конвертации: ");
         unsigned int number;
@@ -39,6 +40,7 @@ int main(void) {
         } else {
             if (scanf("%d", &number) != 1) return -1;
         }
+
 
         switch (ch) {
             case '1':
