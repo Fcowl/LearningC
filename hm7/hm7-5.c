@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include  <time.h>
 
 bool is_prime(int n) {
     if (n < 2) return false;
@@ -16,14 +17,24 @@ bool is_prime_rec(int n, int d) {
     return is_prime_rec(n,d-1);
 }
 
-bool is_prime_caller(int n) {
+bool is_prime_rec_caller(int n) {
     return is_prime_rec(n,n-1);
 }
 
 int main(void) {
     // 25 проверка на простоту
-    for (int i = 1; i < 30 ; i++) {
-        printf("%d - %d ",i,is_prime(i));
-        printf("%d \n",is_prime_caller(i));
+    for (int i = 1; i <= 30 ; i++) {
+        printf("%d - %d %d\n",i,is_prime(i),is_prime_rec_caller(i));
     }
+
+    int n = 10000;
+    printf("Отдельные замеры для наглядности n = %d: \n",n);
+
+    clock_t start = clock();
+    is_prime(n);
+    printf("Время для циклического вычисления: %.7f\n", (double)(clock() - start) / CLOCKS_PER_SEC);
+
+    start = clock();
+    is_prime_rec_caller(n);
+    printf("Время для рекурсивного вычисления: %.7f \n", (double)(clock() - start) / CLOCKS_PER_SEC);
 }
