@@ -19,7 +19,7 @@ int main(void) {
     int cpu_state[CPU_INFO_SIZE] = {0};
     int memory[MEM_SIZE] = {0};
 
-    FILE *f = fopen("program_test.txt","r");
+    FILE *f = fopen("program.txt","r");
     if (f == NULL) {
         printf("ошибка при открытии файла");
         return -1;
