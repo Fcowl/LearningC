@@ -13,6 +13,6 @@ int main(void) {
     } else if (num > 60) {
         printf("3 %.4f",0.5/num);
     }
-
+    
     return 0;
 }
