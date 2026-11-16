@@ -3,6 +3,14 @@
 #define CPU_INFO_SIZE 8
 #define  MEM_SIZE 256
 
+void print_arr(int arr[], int size) {
+    printf("array: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
 int main(void) {
 
     /*
@@ -34,12 +42,8 @@ int main(void) {
     cpu_state[0] = 1;
     cpu_state[3] = memory[0];
     
-    int operand_addr = 0;
-    int operand_val = 0;
     while (cpu_state[4] == 0) {
         
-        operand_addr = memory[cpu_state[0]];
-        operand_val = memory[cpu_state[0]+1];
         if (cpu_state[0] < 0 || cpu_state[0] > 256) {
             // обработка если номер команды out of bounce
             cpu_state[5] = 1;
@@ -47,44 +51,43 @@ int main(void) {
             continue;
         }
         
-        if (cpu_state[2] != 0 && (operand_addr < 0 || operand_addr >= MEM_SIZE)) {
+        if (cpu_state[2] != 0 && (memory[cpu_state[0]] < 0 || memory[cpu_state[0]] >= MEM_SIZE)) {
             // обработка если адрес out of bounce 
             cpu_state[5] = 2;
             cpu_state[0] = cpu_state[3];
             continue;
         }
         
-        cpu_state[2] = operand_addr; // opcode = memory[pc]
+        cpu_state[2] = memory[cpu_state[0]];; // opcode = memory[pc]
         
 
         switch (cpu_state[2]) {
             case 1:
                 // загрузить в cpu_state[1] значение из памяти по адресу
-                cpu_state[1] = memory[operand_val]; // i wanna die bru
+                cpu_state[1] = memory[memory[cpu_state[0]+1]]; // i wanna die bru
                 cpu_state[0]+=2;
                 break;
 
             case 2:
                 // прибавить к cpu_state[1] значение из памяти
-                cpu_state[1] += memory[operand_val];
+                cpu_state[1] += memory[memory[cpu_state[0]+1]];
                 cpu_state[0]+=2;
                 break;
-
             case 3:
                 // вычесть от cpu_state[1] значение из памяти
-                cpu_state[1] -= memory[operand_val];
+                cpu_state[1] -= memory[memory[cpu_state[0]+1]];
                 cpu_state[0]+=2;
                 break;
 
             case 4:
                 // jump
-                cpu_state[0] = operand_addr;
+                cpu_state[0] = memory[cpu_state[0]];;
                 break;
             
             case 5:
                 // jump if zero
                 if (cpu_state[0] == 0) {
-                    cpu_state[1] = operand_addr;
+                    cpu_state[1] = memory[cpu_state[0]];;
                 } else {
                     cpu_state[1] +=2;
                 }
@@ -101,8 +104,8 @@ int main(void) {
                 continue;
         }
         printf("[PC=%03d] command: %d | operand (adress): %d value %d) | ACC: %d\n",
-               cpu_state[0],  operand_addr, operand_val, memory[operand_val], cpu_state[1]);
-                // pc, opcode, operand_addr, operand_val, cpu_state[1]);
+               cpu_state[0],  memory[cpu_state[0]], memory[cpu_state[0]+1], memory[memory[cpu_state[0]+1]], cpu_state[1]);
+                // pc, opcode, memory[cpu_state[0]];, operand_val, cpu_state[1]);
     }
 
     printf("result: %d",cpu_state[1]);
