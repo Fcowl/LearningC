@@ -104,9 +104,7 @@ int main(void) {
         }
         printf("[PC=%03d] command: %d | operand (adress): %d value %d) | ACC: %d\n",
                pc,  operand_addr, operand_val, memory[operand_val], cpu_state[1]);
-                // pc, opcode, operand_addr, operand_val, cpu_state[1]);
     }
-
     printf("result: %d",cpu_state[1]);
     return 0;
 }
