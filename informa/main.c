@@ -53,7 +53,7 @@ int main(void) {
         if (cpu_state[2] != 0 && (operand_addr < 0 || operand_addr >= MEM_SIZE)) {
             // обработка если адрес out of bounce 
             cpu_state[5] = 2;
-            pc = cpu_state[3];
+            cpu_state[0] = cpu_state[3];
             continue;
         }
         
