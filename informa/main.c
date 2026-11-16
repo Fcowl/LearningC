@@ -20,42 +20,44 @@ int main(void) {
     int memory[MEM_SIZE] = {0};
 
     FILE *f = fopen("program_test.txt","r");
-
-    if (f == NULL) return -1;
+    if (f == NULL) {
+        printf("ошибка при открытии файла");
+        return -1;
+    }
 
     int i = 0;
     while (i<MEM_SIZE && fscanf(f,"%d",&memory[i]) == 1) // считывание информации с файла в память
         i++;
-
     fclose(f);
 
-    //printf("%d\n",i);
-    //print_arr(memory,MEM_SIZE);
     cpu_state[0] = 1;
     cpu_state[3] = memory[0];
     
     int operand_addr = 0;
     int operand_val = 0;
+    int pc = 0;
+
     while (cpu_state[4] == 0) {
-        
-        operand_addr = memory[cpu_state[0]];
-        operand_val = memory[cpu_state[0]+1];
-        if (cpu_state[0] < 0 || cpu_state[0] > 256) {
+        pc = cpu_state[0];
+
+        if (pc < 0 || pc >= MEM_SIZE) {
             // обработка если номер команды out of bounce
             cpu_state[5] = 1;
             cpu_state[0] = cpu_state[3];
             continue;
         }
         
+        operand_addr = memory[pc];
+        operand_val = memory[pc+1];
+        
         if (cpu_state[2] != 0 && (operand_addr < 0 || operand_addr >= MEM_SIZE)) {
             // обработка если адрес out of bounce 
             cpu_state[5] = 2;
-            cpu_state[0] = cpu_state[3];
+            pc = cpu_state[3];
             continue;
         }
         
         cpu_state[2] = operand_addr; // opcode = memory[pc]
-        
 
         switch (cpu_state[2]) {
             case 1:
@@ -78,30 +80,30 @@ int main(void) {
 
             case 4:
                 // jump
-                cpu_state[0] = operand_addr;
+                cpu_state[0] = operand_val;
                 break;
             
             case 5:
                 // jump if zero
-                if (cpu_state[0] == 0) {
-                    cpu_state[1] = operand_addr;
+                if (cpu_state[1] == 0) {
+                    cpu_state[0] = operand_val;
                 } else {
-                    cpu_state[1] +=2;
+                    cpu_state[0] +=2;
                 }
                 break;
                 
             case 0:
-                cpu_state[4] = 1; // остановка
+                cpu_state[4] = 1; // остановка halt
                 break;
 
             default:
-                printf("unknown upcode ");
+                printf("unknown opcode ");
                 cpu_state[5] = 3;
                 cpu_state[0] = cpu_state[3];
                 continue;
         }
         printf("[PC=%03d] command: %d | operand (adress): %d value %d) | ACC: %d\n",
-               cpu_state[0],  operand_addr, operand_val, memory[operand_val], cpu_state[1]);
+               pc,  operand_addr, operand_val, memory[operand_val], cpu_state[1]);
                 // pc, opcode, operand_addr, operand_val, cpu_state[1]);
     }
 
