@@ -19,16 +19,10 @@ int main(void) {
     int cpu_state[CPU_INFO_SIZE] = {0};
     int memory[MEM_SIZE] = {0};
 
-    FILE *f = fopen("program.txt","r");
-    if (f == NULL) {
-        printf("ошибка при открытии файла");
-        return -1;
-    }
-
     int i = 0;
-    while (i<MEM_SIZE && fscanf(f,"%d",&memory[i]) == 1) // считывание информации с файла в память
+    while (i<MEM_SIZE && scanf("%d",&memory[i]) == 1) // считывание информации с ВВОДА в память
         i++;
-    fclose(f);
+
 
     cpu_state[0] = 1;
     cpu_state[3] = memory[0];
@@ -105,6 +99,6 @@ int main(void) {
         printf("[PC=%03d] command: %d | operand (adress): %d value %d) | ACC: %d\n",
                pc,  operand_addr, operand_val, memory[operand_val], cpu_state[1]);
     }
-    printf("result: %d",cpu_state[1]);
+    printf("result: %d\n",cpu_state[1]);
     return 0;
 }
