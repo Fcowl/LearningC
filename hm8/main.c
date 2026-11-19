@@ -1,3 +1,4 @@
+//compile gcc main.c myarrfunc.c -o main && ./main
 #include <stdio.h>
 #include <stdlib.h>
 
