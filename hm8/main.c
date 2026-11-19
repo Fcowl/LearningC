@@ -53,7 +53,7 @@ int main(void) {
                 break;
 
             case 'b':
-                printf("insert values into array\n"); // todo eof abort
+                printf("insert values into array\n");
                 int value = insert_arr(arr,arr_size);
                 if (value == arr_size) {
                     printf("insertion successful\n");
