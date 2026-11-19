@@ -23,7 +23,7 @@ int insert_arr(int *arr, int size) {
 int last_positive(int *arr,int size) {
     /* returns index of last positive number and -1 if there is no positive numbers */
 
-    for (int i = size; i >= 0; i--) {
+    for (int i = size-1; i >= 0; i--) {
         if (arr[i] > 0) return i;
     }
     return -1;
