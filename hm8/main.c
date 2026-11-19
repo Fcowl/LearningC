@@ -77,7 +77,7 @@ int main(void) {
                     break;
                 }
 
-                printf("arr: ");
+                printf("array: ");
                 print_arr(arr,arr_size);
                 break;
 
