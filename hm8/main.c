@@ -1,4 +1,4 @@
-//compile gcc main.c myarrfunc.c -o main && ./main
+//compile gcc main.c myarrfunc.c -o main && ./main < input.txt > output.txt
 #include <stdio.h>
 #include <stdlib.h>
 
