@@ -1,0 +1,70 @@
+Choose operation 
+a (1): set array size 
+b (2): fill array 
+c (3): print array 
+d (4): find index of last positive element 
+e (5): find distance between equal values 
+f (6): count number of values < then average 
+g (7): exit 
+Ender a desired array size: set array to size = 10: successfully
+
+Choose operation 
+a (1): set array size 
+b (2): fill array 
+c (3): print array 
+d (4): find index of last positive element 
+e (5): find distance between equal values 
+f (6): count number of values < then average 
+g (7): exit 
+insert 10 values into array
+insertion successful
+
+Choose operation 
+a (1): set array size 
+b (2): fill array 
+c (3): print array 
+d (4): find index of last positive element 
+e (5): find distance between equal values 
+f (6): count number of values < then average 
+g (7): exit 
+array: array: 123 -65 165 -45645 5656 5435 -10 -65 436 87 
+
+Choose operation 
+a (1): set array size 
+b (2): fill array 
+c (3): print array 
+d (4): find index of last positive element 
+e (5): find distance between equal values 
+f (6): count number of values < then average 
+g (7): exit 
+index of last positive element: 9 
+
+Choose operation 
+a (1): set array size 
+b (2): fill array 
+c (3): print array 
+d (4): find index of last positive element 
+e (5): find distance between equal values 
+f (6): count number of values < then average 
+g (7): exit 
+distance between equal numbers = 6 
+
+Choose operation 
+a (1): set array size 
+b (2): fill array 
+c (3): print array 
+d (4): find index of last positive element 
+e (5): find distance between equal values 
+f (6): count number of values < then average 
+g (7): exit 
+amount of values lower then array average: 1 
+
+Choose operation 
+a (1): set array size 
+b (2): fill array 
+c (3): print array 
+d (4): find index of last positive element 
+e (5): find distance between equal values 
+f (6): count number of values < then average 
+g (7): exit 
+end (case g)
