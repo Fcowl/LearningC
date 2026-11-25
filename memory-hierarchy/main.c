@@ -1,9 +1,8 @@
-
 #define CPU "210H"
 
 #define L3 12*1024*1024 // kb
 #define L2 7*1024*1024 // kb
-#define L1 320*1024
+#define L1 320*1024 // kb
 #include <stdio.h>
 
 int convert_to_int(char);
@@ -16,7 +15,7 @@ int main(void) {
     char memory[65536] = {};
     char data[256 * 1024] = {};
 
-    setbuf(stdin, NULL); // ниче не рабо
+    setbuf(stdin, NULL); //  не работает
     int num = get_value();
     //printf("%d\n",num);
 
@@ -35,7 +34,7 @@ int convert_to_int(char ch) {
 }
 
 int get_value() {
-    char ch;
+    int ch;
     int sign = 1;
     int value = 0;
     ch = getchar();
@@ -46,7 +45,7 @@ int get_value() {
     }
 
     while (ch != EOF && ch != '\n') {
-        if (ch >= '0' && ch <= '9' && ch !=0) {
+        if (ch >= '0' && ch <= '9') {
             value = value * 10 + convert_to_int(ch);
         }
         ch = getchar();
@@ -62,7 +61,6 @@ void clear() {
 void print_int(int num) {
     if (num < 0) {
         putchar('-');
-        // Работаем с отрицательными числами напрямую, чтобы не переполнить INT_MIN
         if (num / 10 != 0) {
             print_int(-(num / 10));
         }
