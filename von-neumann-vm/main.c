@@ -40,17 +40,18 @@ int main(void) {
             cpu_state[0] = cpu_state[3];
             continue;
         }
-        
+
         operand_addr = memory[pc];
         operand_val = memory[pc+1];
-        
-        if (cpu_state[2] != 0 && (operand_addr < 0 || operand_addr >= MEM_SIZE)) {
-            // обработка если адрес out of bounce 
-            cpu_state[5] = 2;
-            cpu_state[0] = cpu_state[3];
-            continue;
+
+        if (operand_addr >= 1 && operand_addr <= 5) {
+            if (operand_val < 0 || operand_val >= MEM_SIZE) {
+                cpu_state[5] = 2;        // Код ошибки: адрес операнда out of bounds
+                cpu_state[0] = cpu_state[3];
+                continue;
+            }
         }
-        
+
         cpu_state[2] = operand_addr; // opcode = memory[pc]
 
         switch (cpu_state[2]) {
@@ -76,7 +77,7 @@ int main(void) {
                 // jump
                 cpu_state[0] = operand_val;
                 break;
-            
+
             case 5:
                 // jump if zero
                 if (cpu_state[1] == 0) {
@@ -85,7 +86,7 @@ int main(void) {
                     cpu_state[0] +=2;
                 }
                 break;
-                
+
             case 0:
                 cpu_state[4] = 1; // остановка halt
                 break;
